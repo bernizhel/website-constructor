@@ -1,0 +1,19 @@
+{
+  "name": "website_constructor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernizhel/website_constructor.git"
+  },
+  "author": "Danil Kosenko <detrop.1995@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bernizhel/website_constructor/issues"
+  },
+  "homepage": "https://github.com/bernizhel/website_constructor#readme"
+}
