@@ -2,3 +2,6 @@
 /dist/
 package-lock.json
 /.firebase/
+.firebaserc
+firebase.json
+/.idea/
