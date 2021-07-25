@@ -4,7 +4,6 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
 
@@ -23,6 +22,7 @@ module.exports = {
         extensions: ['.js', '.json'],
         alias: {
             '@a': path.resolve(__dirname, 'src/assets'),
+            '@c': path.resolve(__dirname, 'src/classes'),
             '@': path.resolve(__dirname, 'src'),
         },
     },
@@ -50,12 +50,6 @@ module.exports = {
         new MiniCSSExtractPlugin({
             filename: filename('css'),
         }),
-        new CopyWebpackPlugin({
-            patterns: [{
-                from: path.resolve(__dirname, 'src/assets/image.png'),
-                to: path.resolve(__dirname, 'dist/image.png'),
-            }],
-        }),
     ],
     module: {
         rules: [
@@ -71,7 +65,12 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCSSExtractPlugin.loader, 'css-loader'],
+                exclude: /node_modules/,
+                use: [
+                    MiniCSSExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                ],
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/,
